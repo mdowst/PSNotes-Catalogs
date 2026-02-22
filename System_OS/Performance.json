@@ -1,0 +1,43 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Performance",
+  "Notes": [
+    {
+      "Name": "Determine if Hyper-Threading is enabled",
+      "Snippet": "Function Check-HyperThreading($ComputerName){\n    # Get the Processor information for the computer\n    $Proc = Get-WMIObject Win32_Processor -ComputerName $ComputerName\n \n    # Determine if hyper-threading is enabled\n    $CPUCount = @($Proc).count\n    $NumberOfLogicalProcessors = $($Proc | measure-object -Property NumberOfLogicalProcessors -sum).Sum\n    $NumberOfCores = $($Proc | measure-object -Property NumberOfCores -sum).Sum\n    \n    # Output the results as a PS object\n    [pscustomobject]@{\n        Computer = $ComputerName\n        CPUCount = $CPUCount\n        NumberOfLogicalProcessors  = $NumberOfLogicalProcessors\n        NumberOfCores = $NumberOfCores\n        HyperThreading = $($NumberOfLogicalProcessors -gt $NumberOfCores)\n \n    }\n\n}",
+      "Details": "This function will return the process information from a local or remote computer and determine if HyperThreading is enabled. If the number of logical processors is greater than physical processors (cores), then hyperthreading is enabled and the function returns True for HyperThreading.",
+      "Alias": "determine-is-hyper-threading-is-enabled",
+      "Tags": [
+        "wmi"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get Processor Utilization Percentage",
+      "Snippet": "Get-WmiObject win32_processor -ComputerName $computer | Measure-Object -property LoadPercentage -Average | \n    Select @{Label = \"Computer\"; Expression = {$computer}},@{Label = \"CpuUsage\"; Expression = {$_.Average}}",
+      "Details": "Returns the total percentage of process ultization on your local or remote system.",
+      "Alias": "get-processor-utilization-percentage",
+      "Tags": [
+        "cpu",
+        "performance",
+        "wmi"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get Memory Utilization Percentage",
+      "Snippet": "Get-WmiObject Win32_OperatingSystem -ComputerName $computer | Select @{Label = \"Computer\"; Expression = {$computer}},\n    @{Label = \"MemoryUsage\"; Expression = {100 - [math]::Round(($_.FreePhysicalMemory/$_.TotalVisibleMemorySize)*100,0)}}",
+      "Details": "Returns the total percentage of memory ultization on your local or remote system.",
+      "Alias": "get-memory-utilization-percentage",
+      "Tags": [
+        "memory",
+        "performance",
+        "wmi"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

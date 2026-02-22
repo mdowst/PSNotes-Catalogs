@@ -1,0 +1,83 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Create String",
+  "Notes": [
+    {
+      "Name": "HERE-STRINGS",
+      "Snippet": "$string = @\"\r\n\"The quick brown fox jumps over the lazy dog\"  is an English-language pangrama sentence\r\nthat contains all of the letters of the alphabet. It is commonly used for touch-typing\r\npractice, testing typewriters and computer keyboards, displaying examples of fonts, and\r\nother applications involving text where the use of all letters in the alphabet is desired.\r\nOwing to its brevity and coherence, it has become widely known.\r\n\"@\r\n$string\r\n",
+      "Details": "Helpful for multiple lines, quotation marks, and all unknown strings<br />\nUse double quotes to evaluate variables and expressions and single quotes for literal",
+      "Alias": "here-strings",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Repeat a character inside another string",
+      "Snippet": "\"<$(\"#\" * 5) Repeating character example $(\"#\" * 5)>\"\r\n",
+      "Details": "This will repeat the given string by the number given inside of another string",
+      "Alias": "repeat-a-character-inside-another-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Repeat a character",
+      "Snippet": "\"ha\" * 5\r\n",
+      "Details": "This will repeat the given string by the number given",
+      "Alias": "repeat-a-character",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Add a line break to a string",
+      "Snippet": "\"first line`nsecond line\"\r\n",
+      "Details": "The (`n) will add the line break character",
+      "Alias": "add-a-line-break-to-a-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Creat a literal string",
+      "Snippet": "$animal = 'fox'\r\n'The quick brown $animal jumps over the lazy dog.'\r\n",
+      "Details": "Using the single quote (&#8216;) will create a literal string, that will not evaluate any varibles<br />\nor expressions in the string. It will output exactly as entered.",
+      "Alias": "creat-a-literal-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Evaluate a Expression in a string",
+      "Snippet": "$animal = 'FOX'\r\n\"The quick brown $($animal.ToLower()) jumps over the lazy dog $(2 + 3) times.\"\r\n",
+      "Details": "Use to insert a value in a string based on an expression",
+      "Alias": "evaluate-a-expression-in-a-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Evaluate an Variable in a string",
+      "Snippet": "$animal = 'fox'\r\n\"The quick brown $animal jumps over the lazy dog.\"\r\n",
+      "Details": "Use to insert a value in a string based on the variable",
+      "Alias": "evaluate-an-variable-in-a-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

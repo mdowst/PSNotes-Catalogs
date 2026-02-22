@@ -1,0 +1,41 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Arrays",
+  "Notes": [
+    {
+      "Name": "Remove First Entry in Fixed Array",
+      "Snippet": "# Remove first entry\n$array = $array[1..($array.Length-1)]\n",
+      "Details": "Here is a quick little trick for removing the first entry in a fixed size array. This can be used when you receive the error message: Exception calling &#8220;RemoveAt&#8221; with &#8220;1&#8221; argument(s): &#8220;Collection was of a fixed size.&#8221;",
+      "Alias": "remove-first-entry-in-fixed-array",
+      "Tags": [
+        "array"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Single object array",
+      "Snippet": "[System.Collections.ArrayList] $ArrStrings = @()\n$ArrStrings.Add(\"string\") | Out-Null",
+      "Details": "Works well for strings and other data types",
+      "Alias": "single-object-array",
+      "Tags": [
+        "array",
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Standard PowerShell Object Array",
+      "Snippet": "[System.Collections.Generic.List[PSObject]] $arr = @()\n$arr.Add($objectA)\n$arr.Add($objectB)\n",
+      "Details": "Use to create and add items to a PowerShell array",
+      "Alias": "standard-powershell-object-array-2",
+      "Tags": [
+        "array",
+        "psobject"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

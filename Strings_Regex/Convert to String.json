@@ -1,0 +1,62 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Convert to String",
+  "Notes": [
+    {
+      "Name": "Convert object output to string",
+      "Snippet": "Get-Alias | Out-String\r\n",
+      "Details": "Convert object output to string",
+      "Alias": "convert-object-output-to-string",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert date to string with specific format",
+      "Snippet": "[datetime]$date = Get-Date\r\n$date.ToString('yyyy-MM-dd')\r\n",
+      "Details": "See the section on working with dates and times for more on this topic",
+      "Alias": "convert-date-to-string-with-specific-format",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert number to string with leading zeroes",
+      "Snippet": "[int]$int = 7\r\n$int.ToString('000')\r\n",
+      "Details": "The number of leading zeros can be controled by the value in the ToString()",
+      "Alias": "convert-number-to-string-with-leading-zeroes",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert number to string with certain number of decimals",
+      "Snippet": "[double]$pi = 22/7\r\n$pi.ToString('0.00')\r\n",
+      "Details": "Convert number to string. The number of deciaml places can be controled by the value in the ToString()",
+      "Alias": "convert-number-to-string-with-certain-number-of-decimals",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert number to string",
+      "Snippet": "[int]$int = 10\r\n$int.ToString()\r\n",
+      "Details": "Convert number to string",
+      "Alias": "convert-number-to-string",
+      "Tags": [
+        "int",
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Registry",
+  "Notes": [
+    {
+      "Name": "Query Remote Registry for Key Value",
+      "Snippet": "# Open the specified Registry Hive on a remote machine specified. LocalMachine = HKLM / CurrentUser = HKCU\n$computer = 'localhost'\n$w32reg = [Microsoft.Win32.RegistryKey]::OpenRemoteBaseKey('LocalMachine',$computer)\n\n# Open the specific registry key (exclude hive from path)\n$keypath = 'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Authentication\\LogonUI'\n$SubKey = $w32reg.OpenSubKey($keypath)\n\n# Return data for a specific value\n$SubKey.GetValue('LastLoggedOnUser')\n\n# List all values\n$SubKey.GetValueNames()\n\n# Return data for all values to hashtable\n$AllValues = @{}\n$SubKey.GetValueNames() | ForEach-Object{\n    $AllValues.Add($_,$SubKey.GetValue($_))\n}\n$AllValues",
+      "Details": "This command will create a connection to a remote machine and return the specified registry values. It also shows how you can return all values and data for a key.",
+      "Alias": "query-remote-registry-for-key-value",
+      "Tags": [
+        "registry",
+        "remote"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

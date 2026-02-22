@@ -1,0 +1,18 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "AD Groups",
+  "Notes": [
+    {
+      "Name": "Get the AD Groups for a User with 1 Level of Inheritance",
+      "Snippet": "# Get the direct group memberships\n$UserGroups = Get-ADPrincipalGroupMembership $UserName | \n    Select distinguishedName, GroupCategory, GroupScope, name, objectClass, objectGUID, SamAccountName, SID, \n            @{l='Membership';e={'Direct'}}, @{l='Parent';e={$null}}\n# Get the group membership 1 level down\nforeach($group in $UserGroups){\n    $UserGroups += Get-ADPrincipalGroupMembership -Identity $group.distinguishedName | \n        Select distinguishedName, GroupCategory, GroupScope, name, objectClass, objectGUID, SamAccountName, SID, \n                @{l='Membership';e={'Inherit'}}, @{l='Parent';e={$group.distinguishedName}}\n    \n}\n# Display results\n$UserGroups | FT name, GroupCategory, GroupScope, Membership, Parent -AutoSize",
+      "Details": "Gets the Active Directory Groups a user is a member of and any other groups that they inherit from the direct membership, one level down.",
+      "Alias": "get-the-ad-groups-for-a-user-with-1-level-of-inheritance",
+      "Tags": [
+        "groups",
+        "User"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

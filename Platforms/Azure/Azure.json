@@ -1,0 +1,53 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Azure",
+  "Notes": [
+    {
+      "Name": "Encrypt All Azure Automation Variables",
+      "Snippet": "$ResourceGroupName = ''\n$AutomationAccountName = ''\n\n# Get all variables\n$variables = Get-AzureRMAutomationVariable -ResourceGroupName $ResourceGroupName -AutomationAccountName $AutomationAccountName\n\n# parse through each unencrypted variable\nForeach($var in $variables | Where-Object{$_.Encrypted -ne $True}){\n    \n    # remove the unencrypted variable\n    Remove-AzureRMAutomationVariable -ResourceGroupName $var.ResourceGroupName -AutomationAccountName $var.AutomationAccountName -Name $var.Name\n    \n    # recreate the variable, with the same values and encrypt it\n    New-AzureRMAutomationVariable -ResourceGroupName $var.ResourceGroupName -AutomationAccountName $var.AutomationAccountName -Name $var.Name -Encrypted $True -Value $var.Value -Description $var.Description\n}",
+      "Details": "It is best practices to encrypt all of your Azure Automation Account variables. However, it is not possible to convert an unencrypted variable to an encrypted one. So this snippet will return all variables and if any are unencrypted, it will remove them, the recreate it as an encrypted variable.",
+      "Alias": "encrypt-all-azure-automation-variables",
+      "Tags": [
+        "azure",
+        "AzureAutomation"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get All Azure Virtual Machine IP Addresses",
+      "Snippet": "[System.Collections.Generic.List[PSObject]] $IPAddresses = @()\n$VMs = Get-AzureRMVM\nforeach($VM in $VMs){\n    foreach($interface in $VM.NetworkProfile.NetworkInterfaces){\n        $resource = Get-AzureRMResource -id $interface.Id\n        $nic = Get-AzureRmNetworkInterface -Name $resource.Name -ResourceGroupName $resource.ResourceGroupName\n        Get-AzureRmNetworkInterfaceIpConfig -NetworkInterface $nic | Select-Object @{l='VM';e={$VM.Name}}, PrivateIpAddress, PrivateIpAllocationMethod |\n            ForEach-Object{ $IPAddresses.Add($_) }\n    }\n}\n$IPAddresses",
+      "Details": "This snippet will get all virtual machines in your Azure subscription, then return the internal IP Adresses",
+      "Alias": "get-all-azure-virtual-machine-ip-addresses",
+      "Tags": [
+        "azure"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Find and Load the Azure Automation Hybrid Registration Module",
+      "Snippet": "$installPath = (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\System Center Operations Manager\\12\\Setup\\Agent\").InstallDirectory\n$modulePath = Get-ChildItem (Join-Path $installPath \"AzureAutomation\") -Recurse -Include 'HybridRegistration.psd1' | Select-Object -ExpandProperty FullName\nImport-Module $modulePath",
+      "Details": "The module to setup an Azure Automation Hybrid Runbook Worker is included in the install directory of the Microsoft Monitoring Agent. Since install directories can change, and since this module will include a version number in the path, you cannot hard code the path into a script. Instead you can query the registry for the install path, then lookup the modules psd1 file, bypassing the need to manually check the path every time you want to onboard a hybrid worker.",
+      "Alias": "find-and-load-the-azure-automation-hybrid-registration-module",
+      "Tags": [
+        "azure",
+        "AzureAutomation"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Easily Switch Between Azure Subscriptions and Tenants",
+      "Snippet": "$SubscriptionId = \"Your-Subscription-Guid\"\nif($(Get-AzureRmContext).Subscription.SubscriptionId -ne $SubscriptionId){\n    Set-AzureRmContext -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue\n    if($(Get-AzureRmContext).Subscription.SubscriptionId -ne $SubscriptionId){\n        Clear-AzureRMContext -Scope CurrentUser -Force -ErrorAction SilentlyContinue\n        Clear-AzureRmDefault -Force -ErrorAction SilentlyContinue\n        $connect = Add-AzureRmAccount -SubscriptionId $SubscriptionId\n    }\n}",
+      "Details": "This snippet will check that the value of $SubscriptionId variable is the current Azure Subscription your session is connected to. If not then it will attempt to switch to it. If the subscription is not in the same context, then it will clear your current session and prompt for credentials to connect to the new subscription.",
+      "Alias": "easily-switch-between-azure-subscriptions-and-tenants",
+      "Tags": [
+        "azure",
+        "subscriptions"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

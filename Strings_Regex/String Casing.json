@@ -1,0 +1,50 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "String Casing",
+  "Notes": [
+    {
+      "Name": "Properly Capitalize a Title Using PowerShell",
+      "Snippet": "# Split the string into individual words\n$words = $string.Split()\n[System.Collections.Generic.List[PSObject]]$stringArray = @()\nFor($i = 0; $i -lt $words.Count; $i++){\n    # Capitalize words of four or more letters, the first word, and the last word\n    if($words[$i].Length -gt 3 -or $i -eq 0 -or $i -eq ($words.Count - 1)){\n        # account for hyphen and capitalize words before and after\n        $words[$i] = @($words[$i].Split('-') | ForEach-Object{\n            $_.Substring(0,1).ToUpper() + $_.Substring(1,$_.Length-1)\n        }) -join('-')\n    } \n    # and the capitalized string to the array\n    $stringArray.Add($words[$i])\n}\n# join the words back together to form your title\n$stringArray -join(' ')",
+      "Details": "Being married to someone who majored in English has made me extra conscious of my spelling and capitalization. So, for my blog posts, I&#8217;ve written a script to help me ensure my titles are properly capitalized. It is not perfect (i.e. it doesn&#8217;t do a dictionary lookup), but it follows the basic APA guidelines. I thought I would share it, in case others would find it useful.",
+      "Alias": "properly-capitalize-a-title-using-powershell",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "String to uppercase on first letter only",
+      "Snippet": "$string.Substring(0,1).ToUpper() + $string.Substring(1,$string.Length-1).ToLower()\r\n",
+      "Details": "String to uppercase on first letter only",
+      "Alias": "string-to-uppercase-on-first-letter-only",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "String to lowercase",
+      "Snippet": "$string.ToLower()\r\n",
+      "Details": "String to lowercase",
+      "Alias": "string-to-lowercase",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "String to uppercase",
+      "Snippet": "$string.ToUpper()\r\n",
+      "Details": "String to uppercase",
+      "Alias": "string-to-uppercase",
+      "Tags": [
+        "string"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}
