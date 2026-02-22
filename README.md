@@ -57,10 +57,11 @@ Community contributions are encouraged.
 
 If you would like to submit a catalog:
 
-1. Create a folder named after your topic.
-2. Ensure the catalog exports cleanly from PSNotes.
-3. Include a short README in your folder explaining what the catalog contains.
-4. Open a pull request.
+1. Locate the parent catalog folder for your contribution.
+   1. If you have questions on which parent catalog open an issue.
+1. Ensure the catalog imports and exports cleanly from PSNotes.
+1. Include a short README with the same name as the JSON explaining what the catalog contains.
+1. Open a pull request.
 
 Please keep catalogs focused, well-tagged, and free of environment-specific data.
 
