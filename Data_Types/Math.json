@@ -6,8 +6,9 @@
       "Name": "Round Number to Two Decimal Places",
       "Snippet": "[math]::Round($number,2)",
       "Details": "Round number to two decimal places. Change the number after the comma to round to different decimal place",
-      "Alias": "round-number-to-two-decimal-places",
+      "Alias": "",
       "Tags": [
+        "data-types",
         "math",
         "rounding"
       ],
@@ -18,8 +19,10 @@
       "Name": "Round to the Nearest Half",
       "Snippet": "[math]::Round($number * 2, [MidpointRounding]::AwayFromZero) / 2",
       "Details": "Round a number to the nearest half (.5).",
-      "Alias": "round-to-the-nearest-half",
+      "Alias": "",
       "Tags": [
+        "data-types",
+        "math",
         "rounding"
       ],
       "Run": false,
@@ -27,11 +30,12 @@
     },
     {
       "Name": "Sum a list of numbers",
-      "Snippet": "$sum = $NumberArray | Measure-Object -Sum\n$sum.Sum\n",
+      "Snippet": "$stats = $NumberArray | Measure-Object -Sum\n$stats.Sum",
       "Details": "Use to get the sum of a number array",
-      "Alias": "sum-a-list-of-numbers",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,
@@ -39,23 +43,25 @@
     },
     {
       "Name": "Minimum value from list of numbers",
-      "Snippet": "$sum = $NumberArray | Measure-Object -Minimum \n$sum.Minimum\n",
+      "Snippet": "$stats = $NumberArray | Measure-Object -Minimum \n$stats.Minimum",
       "Details": "Use to get the minimum value of a number array",
-      "Alias": "minimum-value-from-list-of-numbers",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,
       "Kind": 0
     },
     {
-      "Name": "Maximun value from list of numbers",
-      "Snippet": "$sum = $NumberArray | Measure-Object -Maximum\n$sum.Maximum\n",
+      "Name": "Maximum value from list of numbers",
+      "Snippet": "$stats = $NumberArray | Measure-Object -Maximum\n$stats.Maximum",
       "Details": "Use to get the maximum value of a number array",
-      "Alias": "maximun-value-from-list-of-numbers",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,
@@ -63,11 +69,12 @@
     },
     {
       "Name": "Average a list of numbers",
-      "Snippet": "$sum = $NumberArray | Measure-Object -Average\n$sum.Average\n",
-      "Details": "Use to get the sum of a number array",
-      "Alias": "average-a-list-of-numbers",
+      "Snippet": "$stats = $NumberArray | Measure-Object -Average\n$stats.Average",
+      "Details": "Use to get the average value of a number array",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,
@@ -75,11 +82,12 @@
     },
     {
       "Name": "Find the Mode Value",
-      "Snippet": "# Get the number of occurrences for each number\n$numberCount = $NumberArray | Group-Object | Sort-Object -Descending count\n\n# check that it is possble to calculate a mode\nif(@($numberCount | Select-Object Count -Unique).Count -gt 1){\n\n    # Get the count for the numbers with the most occurrences\n    $topCount = ($numberCount | Select-Object -First 1).Count\n\n    # Get the most frequently occurring values \n    $modevalue = ($numberCount | Where-Object{$_.Count -eq $topCount}).Name\n}\n$modevalue\n",
+      "Snippet": "# Get the number of occurrences for each number\n$numberCount = $NumberArray | Group-Object | Sort-Object -Descending count\n\n# check that it is possble to calculate a mode\nif(@($numberCount | Select-Object Count -Unique).Count -gt 1){\n\n    # Get the count for the numbers with the most occurrences\n    $topCount = ($numberCount | Select-Object -First 1).Count\n\n    # Get the most frequently occurring values \n    $modevalue = ($numberCount | Where-Object{$_.Count -eq $topCount}).Name\n}\n$modevalue",
       "Details": "Use this snippet to compute the mode from an array of numerical values",
-      "Alias": "find-the-mode-value",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,
@@ -87,11 +95,12 @@
     },
     {
       "Name": "Find the Median Value",
-      "Snippet": "# sort array\n$NumberArray = $NumberArray | Sort-Object\nif ($NumberArray.count%2) {\n    # if odd\n    $medianvalue = $NumberArray[[math]::Floor($NumberArray.count/2)]\n}\nelse {\n    # if even\n    $MedianValue = ($NumberArray[$NumberArray.Count/2],$NumberArray[$NumberArray.count/2-1] | Measure-Object -Average).average\n}\n$MedianValue\n",
+      "Snippet": "# sort array\n$NumberArray = $NumberArray | Sort-Object\nif ($NumberArray.count%2) {\n    # if odd\n    $MedianValue = $NumberArray[[math]::Floor($NumberArray.count/2)]\n}\nelse {\n    # if even\n    $MedianValue = ($NumberArray[$NumberArray.Count/2],$NumberArray[$NumberArray.count/2-1] | Measure-Object -Average).average\n}\n$MedianValue",
       "Details": "Use this snippet to compute the median from an array of numerical values",
-      "Alias": "find-the-median-value-2",
+      "Alias": "",
       "Tags": [
         "array",
+        "data-types",
         "math"
       ],
       "Run": false,

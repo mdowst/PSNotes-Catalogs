@@ -6,22 +6,26 @@
       "Name": "Parse Email Address",
       "Snippet": "New-Object \"System.Net.Mail.MailAddress\" -ArgumentList $emailAddress",
       "Details": "You can use this snippet to parse an email address and extract the different components of it. (Tip. It works for UPNs too)",
-      "Alias": "parse-email-address",
+      "Alias": "",
       "Tags": [
         "email",
-        "string"
+        "string",
+        "strings",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Reverse a string",
-      "Snippet": "$array = $string.ToCharArray()\r\n[array]::Reverse($array)\r\n-join($array)\r\n\r\n",
+      "Snippet": "$array = $string.ToCharArray()\n[array]::Reverse($array)\n-join($array)\n\n",
       "Details": "Reserves the order of all characters in a string",
-      "Alias": "reverse-a-string",
+      "Alias": "",
       "Tags": [
         "array",
-        "string"
+        "string",
+        "strings",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0

@@ -4,63 +4,69 @@
   "Notes": [
     {
       "Name": "Split string into an array on spaces",
-      "Snippet": "$string = \"The quick brown fox jumps over the lazy dog.\"\r\n$string.split()\r\n",
+      "Snippet": "$string = \"The quick brown fox jumps over the lazy dog.\"\n$string.split()\n",
       "Details": "Uses a split to break apart the string",
-      "Alias": "split-string-into-an-array-on-spaces",
+      "Alias": "",
       "Tags": [
         "array",
         "split",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Split string into an array on line break",
-      "Snippet": "$string.split(\"`n\")\r\n",
+      "Snippet": "$string.split(\"`n\")\n",
       "Details": "Uses a split to break apart the string",
-      "Alias": "split-string-into-an-array-on-line-break",
+      "Alias": "",
       "Tags": [
         "array",
         "split",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Exclude blanks when splitting a string into an array",
-      "Snippet": "$option = [System.StringSplitOptions]::RemoveEmptyEntries\r\n$string.split(\";\",$option)\r\n",
+      "Snippet": "$option = [System.StringSplitOptions]::RemoveEmptyEntries\n$string.split(\";\",$option)\n",
       "Details": "Uses a split and optional options to break apart the string",
-      "Alias": "exclude-blanks-when-splitting-a-string-into-an-array",
+      "Alias": "",
       "Tags": [
         "array",
         "split",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Split string into an array on semicolon",
-      "Snippet": "$string.split(\";\")\r\n\r\n",
+      "Snippet": "$string.split(\";\")\n\n",
       "Details": "Uses a split to break apart the string",
-      "Alias": "split-string-into-an-array-on-semicolon",
+      "Alias": "",
       "Tags": [
         "array",
         "split",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Get all Text after a character",
-      "Snippet": "$string = \"1. Computer name:DC-G11-FTW.contoso.com\"\r\n$string.Substring($string.IndexOf(\":\")+1,$string.length-$string.IndexOf(\":\")-1)\r\n",
+      "Snippet": "$string = \"1. Computer name:DC-G11-FTW.contoso.com\"\n$string.Substring($string.IndexOf(\":\")+1,$string.length-$string.IndexOf(\":\")-1)\n",
       "Details": "Uses a substring and IndexOf to break apart the string",
-      "Alias": "get-all-text-after-a-character",
+      "Alias": "",
       "Tags": [
+        "split",
         "string",
+        "strings-regex",
         "substring"
       ],
       "Run": false,
@@ -68,11 +74,13 @@
     },
     {
       "Name": "Get all Text before a character",
-      "Snippet": "$string = \"john.doe@contoso.com\"\r\n$string.Substring(0,$string.IndexOf(\"@\"))\r\n",
+      "Snippet": "$string = \"john.doe@contoso.com\"\n$string.Substring(0,$string.IndexOf(\"@\"))\n",
       "Details": "Uses a substring and IndexOf to break apart the string",
-      "Alias": "get-all-text-before-a-character",
+      "Alias": "",
       "Tags": [
+        "split",
         "string",
+        "strings-regex",
         "substring"
       ],
       "Run": false,

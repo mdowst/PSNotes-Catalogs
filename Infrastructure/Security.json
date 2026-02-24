@@ -6,8 +6,10 @@
       "Name": "Expand Shortened URLs",
       "Snippet": "# Create Web Request Object\n$request = [System.Net.WebRequest]::Create($url)\n# Make it think we are using Edge on Windows 10. Required for some shorteners.\n$request.UserAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.246'\n# Get the expanded URL\n$request.GetResponse().ResponseUri.AbsoluteUri",
       "Details": "This command will query a shortened URL and return the fully expanded URL. It has been tested with fb.me, bit.ly, zpr.io, aka.ms, buff.ly, t.co, ow.ly, tinyurl.com, &amp; rviv.ly to name just a few. If you find any it doesn&#8217;t work with please let me know in the comments below.",
-      "Alias": "expand-shortened-urls",
+      "Alias": "",
       "Tags": [
+        "infrastructure",
+        "security",
         "webrequest"
       ],
       "Run": false,
@@ -15,10 +17,11 @@
     },
     {
       "Name": "Elevate Script to Run As Administrator",
-      "Snippet": "# Request elevation with administration rights\r\nIf (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] \"Administrator\"))\r\n{   \r\n    $arguments = \"& '\" + $myinvocation.mycommand.definition + \"'\"\r\n    Start-Process powershell -Verb runAs -ArgumentList $arguments\r\n    Break\r\n} else {\r\n    # Code to run elevated here\r\n}",
+      "Snippet": "# Request elevation with administration rights\nIf (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] \"Administrator\"))\n{   \n    $arguments = \"& '\" + $myinvocation.mycommand.definition + \"'\"\n    Start-Process powershell -Verb runAs -ArgumentList $arguments\n    Break\n} else {\n    # Code to run elevated here\n}",
       "Details": "This command will automatically elevate your script during the run time.",
-      "Alias": "elevate-script-to-run-as-administrator",
+      "Alias": "",
       "Tags": [
+        "infrastructure",
         "security"
       ],
       "Run": false,

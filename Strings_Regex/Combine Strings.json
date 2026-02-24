@@ -4,59 +4,69 @@
   "Notes": [
     {
       "Name": "Combine an array into a string with semicolon separator",
-      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\r\n$array -join(';')\r\n",
+      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\n$array -join(';')\n",
       "Details": "Uses a join to combine the strings",
-      "Alias": "combine-an-array-into-a-string-with-semicolon-separator",
+      "Alias": "",
       "Tags": [
         "array",
+        "combine",
         "join",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Combine an array into a string with space separator",
-      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\r\n$array -join(' ')\r\n",
+      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\n$array -join(' ')\n",
       "Details": "Uses a join to combine the strings",
-      "Alias": "combine-an-array-into-a-string-with-space-separator",
+      "Alias": "",
       "Tags": [
         "array",
+        "combine",
         "join",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Composite Format String",
-      "Snippet": "$string = 'The quick brown {0} jumps over the lazy {1}.'\r\n$string -f 'fox','dog'\r\n",
+      "Snippet": "$string = 'The quick brown {0} jumps over the lazy {1}.'\n$string -f 'fox','dog'\n",
       "Details": "Allows for the easy replacement of certain characters. Great when dealing with multiple languages.",
-      "Alias": "composite-format-string",
+      "Alias": "",
       "Tags": [
-        "string"
+        "combine",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Use StringBuilder to combine multiple strings",
-      "Snippet": "$stringBuilder = New-Object System.Text.StringBuilder\r\nfor ($i = 0; $i -lt 10; $i++){\r\n    $stringBuilder.Append(\"Line $i`r`n\") | Out-Null\r\n}\r\n$stringBuilder.ToString()\r\n",
+      "Snippet": "$stringBuilder = New-Object System.Text.StringBuilder\nfor ($i = 0; $i -lt 10; $i++){\n    $stringBuilder.Append(\"Line $i`r`n\") | Out-Null\n}\n$stringBuilder.ToString()\n",
       "Details": "This performs much better the stanard array builder of +=",
-      "Alias": "use-stringbuilder-to-combine-multiple-strings",
+      "Alias": "",
       "Tags": [
-        "string"
+        "combine",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Combine multiple strings",
-      "Snippet": "$string1 = \"The quick brown fox \"\r\n$string2 =\"jumps over the lazy dog\"\r\n$string1 + $string2\r\n",
+      "Snippet": "$string1 = \"The quick brown fox \"\n$string2 =\"jumps over the lazy dog\"\n$string1 + $string2\n",
       "Details": "This should only be used for a fixed number of strings.<br />\nFor combining a lot of strings or an unknown number, refer to the StringBuilder",
-      "Alias": "combine-multiple-strings",
+      "Alias": "",
       "Tags": [
-        "string"
+        "combine",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0

@@ -6,8 +6,9 @@
       "Name": "Add Thousands Separators to a Number",
       "Snippet": "'{0:N}' -f $number",
       "Details": "Use this method to add commas to your numbers for easier reading.",
-      "Alias": "add-thousands-separators-to-a-number",
+      "Alias": "",
       "Tags": [
+        "data-types",
         "formatting",
         "numbers"
       ],

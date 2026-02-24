@@ -4,34 +4,40 @@
   "Notes": [
     {
       "Name": "Run Multiple Commands on Remote Machine",
-      "Snippet": "# Create a persistent connection to remote machine\r\n$Session = New-PSSession -ComputerName $Computer -Credential $Credential\r\n\r\n# Runs on remote machine\r\nInvoke-Command -Session $Session -ScriptBlock {Stop-Service -Name Bits}\r\n\r\n# Run on local machine\r\nGet-Service\r\n\r\n# Runs on remote machine again\r\nInvoke-Command -Session $Session -ScriptBlock {Start-Service -Name Bits}\r\n",
+      "Snippet": "# Create a persistent connection to remote machine\n$Session = New-PSSession -ComputerName $Computer -Credential $Credential\n\n# Runs on remote machine\nInvoke-Command -Session $Session -ScriptBlock {Stop-Service -Name Bits}\n\n# Run on local machine\nGet-Service\n\n# Runs on remote machine again\nInvoke-Command -Session $Session -ScriptBlock {Start-Service -Name Bits}\n",
       "Details": "Use the New-PSSession to creae a persistent connection to a remote machine. This allows you to call the remote machine multiple times within a single script, without the need to reinitialize your session.",
-      "Alias": "run-multiple-commands-on-remote-machine",
+      "Alias": "",
       "Tags": [
-        "remote"
+        "infrastructure",
+        "remote",
+        "remoting"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Run Command on Remote Machine with Credentials",
-      "Snippet": "$Credential = Get-Credential\r\nInvoke-Command -ComputerName $Computer -ScriptBlock {Stop-Service -Name Bits} -Credential $Credential\r\n",
+      "Snippet": "$Credential = Get-Credential\nInvoke-Command -ComputerName $Computer -ScriptBlock {Stop-Service -Name Bits} -Credential $Credential\n",
       "Details": "Use to run a single command or script on a remote machine with different credentials than the running user.",
-      "Alias": "run-command-on-remote-machine-with-credentials",
+      "Alias": "",
       "Tags": [
         "credential",
-        "remote"
+        "infrastructure",
+        "remote",
+        "remoting"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Run Command on Remote Machine",
-      "Snippet": "$Credential = Get-Credential\r\nInvoke-Command -ComputerName $Computer -ScriptBlock {Stop-Service -Name Bits}\r\n",
+      "Snippet": "$Credential = Get-Credential\nInvoke-Command -ComputerName $Computer -ScriptBlock {Stop-Service -Name Bits}\n",
       "Details": "Use to run a single command or script on a remote machine.",
-      "Alias": "run-command-on-remote-machine",
+      "Alias": "",
       "Tags": [
-        "remote"
+        "infrastructure",
+        "remote",
+        "remoting"
       ],
       "Run": false,
       "Kind": 0

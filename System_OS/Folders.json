@@ -6,10 +6,11 @@
       "Name": "Get User&#8217;s Desktop Path",
       "Snippet": "$ShellFolders = Get-ItemProperty -Path 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\User Shell Folders'\n$ShellFolders.Desktop",
       "Details": "Check the User Shell Folders registry keys for the path to the user&#8217;s desktop. This is better than using environmental variables as they may be using folder redirects.",
-      "Alias": "get-users-desktop-path",
+      "Alias": "",
       "Tags": [
-        "Folders",
+        "folders",
         "registry",
+        "system-os",
         "User"
       ],
       "Run": false,
@@ -19,32 +20,35 @@
       "Name": "Get Folder Path of the Current Script",
       "Snippet": "Function Get-ScriptDirectory{\n    $Invocation = (Get-Variable MyInvocation -Scope 1).Value;\n    if($Invocation.PSScriptRoot){\n        $Invocation.PSScriptRoot;\n    }\n    elseif($Invocation.MyCommand.Path){\n        Split-Path $Invocation.MyCommand.Path\n    }\n    elseif($Invocation.InvocationName.LastIndexOf(\"\\\") -gt 0){\n        $Invocation.InvocationName.Substring(0,$Invocation.InvocationName.LastIndexOf(\"\\\"));\n    }\n    else {\n        Get-PSDrive | Where-Object{$_.Provider.Name -eq 'FileSystem'} | Foreach-Object {\n            Join-Path -Path $_.Root -ChildPath $_.CurrentLocation\n        }\n    }\n}",
       "Details": "Returns the path of the script being executed. If unavailable, it will return the path of the PowerShell console.",
-      "Alias": "get-folder-path-of-the-current-script",
+      "Alias": "",
       "Tags": [
-        "Folders"
+        "folders",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Create a Folder Share",
-      "Snippet": "$Shares=[WMICLASS]'WIN32_Share'\r\n$sd = ([WMIClass] \"Win32_SecurityDescriptor\").CreateInstance() \r\n$shares.create($FolderPath, $ShareName, 0, 100, \"Description\", \"\", $sd)",
+      "Snippet": "$Shares=[WMICLASS]'WIN32_Share'\n$sd = ([WMIClass] \"Win32_SecurityDescriptor\").CreateInstance() \n$shares.create($FolderPath, $ShareName, 0, 100, \"Description\", \"\", $sd)",
       "Details": "Return all the domain and forest level FSMO roles.",
-      "Alias": "create-a-folder-share",
+      "Alias": "",
       "Tags": [
-        "Folders",
-        "Shares"
+        "folders",
+        "Shares",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Create Folder If It Doesn&#8217;t Exist",
-      "Snippet": "If (-not(test-path $FolderPath)){\r\n    New-Item -type directory -Path $FolderPath\r\n}",
+      "Snippet": "If (-not(test-path $FolderPath)){\n    New-Item -type directory -Path $FolderPath\n}",
       "Details": "Check if a folder path exists using the Test-Path and if it doesn&#8217;t create the folder using New-Item",
-      "Alias": "create-folder-if-it-doesnt-exist",
+      "Alias": "",
       "Tags": [
-        "Folders"
+        "folders",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0

@@ -6,8 +6,10 @@
       "Name": "Get AD Users by Last Password Change Date",
       "Snippet": "Get-ADUser -Filter * -SearchBase \"CN=Users,DC=contoso,DC=com\" -ResultPageSize 0 -Property CN, pwdLastSet |\n    Select-Object -Property CN, SamAccountName, @{ n = \"PwdLastSetDate\"; e = { [datetime]::FromFileTime( $_.pwdLastSet ) } } |\n    Sort-Object -Property PwdLastSetDate",
       "Details": "Gets the Active Directory users in a given OU and sorts them by Password Last Set Date.",
-      "Alias": "get-ad-users-by-last-password-change-date",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "User"
       ],
       "Run": false,
@@ -17,8 +19,10 @@
       "Name": "Check sAMAccountName Requirements",
       "Snippet": "Function Check-sAMAccountName {\n    [CmdletBinding()]\n    [OutputType([string])]\n    param(\n        [parameter(Mandatory=$true)]\n        [string]$ScriptParameters\n    )\n    # exclude the characters \" * + , / : ; &lt; = &gt; ? @ [ \\ ] |\n    $excludedChars = 34,42,43,44,47,58,59,60,61,62,63,64,91,92,93,124\n    $StringBuilder = New-Object System.Text.StringBuilder\n    # split name into Char Array and check each character\n    $sAMAccountName.ToCharArray() | ForEach-Object{\n        try{\n            # convert char to ascii decimal\n            $ascii = [byte][char]$_\n            # check if char is in the excluded range, if not add to string builder\n            if($ascii -le 32 -or $excludedChars -contains $ascii){\n                Write-Verbose \"$_ - excluded character\"\n            } else {\n                $StringBuilder.Append($_) | Out-Null\n            }\n        }\n        catch{\n            Write-Verbose \"$_ - None ascii character\"\n        }\n    }\n\n    # create new name string after removing excluded charaters\n    $newName = $StringBuilder.ToString()\n\n    # check that name is less than 20 characters\n    if($newName.Length -gt 20){\n        $newName = $newName.Substring(0,20)\n    }\n\n    # Check that last character is not the period character, \".\". Remove if found\n    $newName = [regex]::Replace($newName,\".$\",\"\")\n\n    $newName\n}",
       "Details": "This function will check a string to confirm that it meets the requirements for creating a sAMAccountName. The requirements are based on the <a href=\"https://social.technet.microsoft.com/wiki/contents/articles/11216.active-directory-requirements-for-creating-objects.aspx#Objects_with_sAMAccountName_Attribute\" target=\"_blank\" rel=\"noopener noreferrer\">Objects with sAMAccountName Attribute</a> section of the Active Directory: Requirements For Creating Objects wiki article.",
-      "Alias": "check-samaccountname-requirements",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "User"
       ],
       "Run": false,
@@ -28,8 +32,10 @@
       "Name": "Get AD Users by Last Logon Date",
       "Snippet": "Get-ADUser -Filter * -SearchBase \"CN=Users,DC=contoso,DC=com\" -ResultPageSize 0 -Property CN, LastLogonTimestamp |\n    Select-Object -Property CN, SamAccountName, @{ n = \"LastLogonDate\"; e = { [datetime]::FromFileTime( $_.lastLogonTimestamp ) } } |\n    Sort-Object -Property LastLogonDate",
       "Details": "Gets the Active Directory users in a given OU and sorts them by Last Logon Date.",
-      "Alias": "get-ad-users-by-last-logon-date",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "User"
       ],
       "Run": false,
@@ -39,8 +45,10 @@
       "Name": "Search for AD User by Partial Name",
       "Snippet": "Get-ADUser -Filter {Name -like '*joe*'}",
       "Details": "This snippet will allow you to search for an Active Directory user with all of part of their name.",
-      "Alias": "search-for-ad-user-by-partial-name",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "User"
       ],
       "Run": false,
@@ -50,8 +58,10 @@
       "Name": "Search for AD User without AD module",
       "Snippet": "# search based on SamAccountNamer\n$strFilter = \"(SAMAccountName=$username)\"\n$objDomain = New-Object System.DirectoryServices.DirectoryEntry\n$objSearcher = New-Object System.DirectoryServices.DirectorySearcher\n$objSearcher.SearchRoot = $objDomain\n$objSearcher.PageSize = 1000\n$objSearcher.Filter = $strFilter\n$objSearcher.SearchScope = \"Subtree\"\n# Add additional properties to return here\n$colProplist = \"name\",\"SAMAccountName\"\nforeach ($i in $colPropList){\n    $foo = $objSearcher.PropertiesToLoad.Add($i)\n}\n$colResults = $objSearcher.FindAll()\n# formation output results\n[System.Collections.Generic.List[PSObject]] $results = @()\nforeach ($objResult in $colResults){\n    $properties = @{}\n    $objResult.Properties.GetEnumerator() | ForEach-Object{\n        $properties.Add($_.Key,$_.Value[0])\n    }\n    $results.Add([pscustomobject]$properties)\n}\n$results",
       "Details": "This snippet will allow you to search for an Active Directory user without needing to install the Active Directory PowerShell module",
-      "Alias": "search-for-ad-user-without-ad-module",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "LDAP",
         "User"
       ],
@@ -62,8 +72,10 @@
       "Name": "Test AD User Credentials",
       "Snippet": "Add-Type -AssemblyName System.DirectoryServices.AccountManagement\n$DS = New-Object System.DirectoryServices.AccountManagement.PrincipalContext('domain')\n$DS.ValidateCredentials($UserName, $Password)",
       "Details": "Attempts to authenticate against domain controller and return true or false if it was able to authenticate successfully.",
-      "Alias": "test-ad-user-credentials",
+      "Alias": "",
       "Tags": [
+        "active directory",
+        "ad",
         "Credentials",
         "User"
       ],

@@ -6,8 +6,10 @@
       "Name": "Check Remote Desktop Protocol Port",
       "Snippet": "Test-NetConnection -Computer $Server -CommonTCPPort RDP",
       "Details": "Using the Test-NetConnection cmdlet you can confirm that a server is reachable via the standard RDP port of 3389.",
-      "Alias": "check-remote-desktop-protocol-port",
+      "Alias": "",
       "Tags": [
+        "infrastructure",
+        "networking",
         "port"
       ],
       "Run": false,
@@ -17,8 +19,10 @@
       "Name": "Check if Port is Open",
       "Snippet": "$socket = new-object Net.Sockets.TcpClient\n$socket.Connect($IPAddress,$Port)\n$socket.Connected",
       "Details": "Just supply an IP Address and Port number and it will return true or false, based on if it was able to connect.",
-      "Alias": "check-if-port-is-open",
+      "Alias": "",
       "Tags": [
+        "infrastructure",
+        "networking",
         "port"
       ],
       "Run": false,
@@ -28,10 +32,12 @@
       "Name": "Get Your Local IP Address",
       "Snippet": "Get-NetIPAddress",
       "Details": "Get-NetIPAddress returns the all the local IP addresses of the machine it is run on.",
-      "Alias": "get-your-local-ip-address",
+      "Alias": "",
       "Tags": [
         "dns",
-        "ip-address"
+        "infrastructure",
+        "ip-address",
+        "networking"
       ],
       "Run": false,
       "Kind": 0
@@ -40,10 +46,12 @@
       "Name": "Get External IP Address",
       "Snippet": "Invoke-RestMethod 'https://api.ipify.org?format=json' | Select-Object -ExpandProperty IP",
       "Details": "Uses the ipify API to return your external IP address",
-      "Alias": "get-external-ip-address",
+      "Alias": "",
       "Tags": [
         "dns",
-        "ip-address"
+        "infrastructure",
+        "ip-address",
+        "networking"
       ],
       "Run": false,
       "Kind": 0
@@ -52,10 +60,12 @@
       "Name": "Get IP from Host Name",
       "Snippet": "[System.Net.Dns]::GetHostAddresses($ServerName)",
       "Details": "Get the IP address based on the host name",
-      "Alias": "get-ip-from-host-name",
+      "Alias": "",
       "Tags": [
         "dns",
-        "ip-address"
+        "infrastructure",
+        "ip-address",
+        "networking"
       ],
       "Run": false,
       "Kind": 0
@@ -64,10 +74,12 @@
       "Name": "Get Host Name from IP",
       "Snippet": "[System.Net.Dns]::GetHostbyAddress($IPAddress) ",
       "Details": "Get the host name from an IP address",
-      "Alias": "get-host-name-from-ip",
+      "Alias": "",
       "Tags": [
         "dns",
-        "ip-address"
+        "infrastructure",
+        "ip-address",
+        "networking"
       ],
       "Run": false,
       "Kind": 0

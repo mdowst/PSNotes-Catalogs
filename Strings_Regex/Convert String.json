@@ -4,56 +4,66 @@
   "Notes": [
     {
       "Name": "Convert object output to string",
-      "Snippet": "Get-Alias | Out-String\r\n",
+      "Snippet": "Get-Alias | Out-String\n",
       "Details": "Convert object output to string",
-      "Alias": "convert-object-output-to-string",
+      "Alias": "",
       "Tags": [
-        "string"
+        "convert",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Convert date to string with specific format",
-      "Snippet": "[datetime]$date = Get-Date\r\n$date.ToString('yyyy-MM-dd')\r\n",
+      "Snippet": "[datetime]$date = Get-Date\n$date.ToString('yyyy-MM-dd')\n",
       "Details": "See the section on working with dates and times for more on this topic",
-      "Alias": "convert-date-to-string-with-specific-format",
+      "Alias": "",
       "Tags": [
-        "string"
+        "convert",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Convert number to string with leading zeroes",
-      "Snippet": "[int]$int = 7\r\n$int.ToString('000')\r\n",
+      "Snippet": "[int]$int = 7\n$int.ToString('000')\n",
       "Details": "The number of leading zeros can be controled by the value in the ToString()",
-      "Alias": "convert-number-to-string-with-leading-zeroes",
+      "Alias": "",
       "Tags": [
-        "string"
+        "convert",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Convert number to string with certain number of decimals",
-      "Snippet": "[double]$pi = 22/7\r\n$pi.ToString('0.00')\r\n",
+      "Snippet": "[double]$pi = 22/7\n$pi.ToString('0.00')\n",
       "Details": "Convert number to string. The number of deciaml places can be controled by the value in the ToString()",
-      "Alias": "convert-number-to-string-with-certain-number-of-decimals",
+      "Alias": "",
       "Tags": [
-        "string"
+        "convert",
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Convert number to string",
-      "Snippet": "[int]$int = 10\r\n$int.ToString()\r\n",
+      "Snippet": "[int]$int = 10\n$int.ToString()\n",
       "Details": "Convert number to string",
-      "Alias": "convert-number-to-string",
+      "Alias": "",
       "Tags": [
+        "convert",
         "int",
-        "string"
+        "string",
+        "strings-regex"
       ],
       "Run": false,
       "Kind": 0

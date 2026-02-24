@@ -6,11 +6,12 @@
       "Name": "Grant Permissions to Folder Share",
       "Snippet": "Grant-SmbShareAccess -name $ShareName -AccountName $Account -AccessRight Full -Force",
       "Details": "Grants share permissions to a user or group",
-      "Alias": "grant-permissions-to-folder-share",
+      "Alias": "",
       "Tags": [
         "Folders",
         "Permissions",
-        "Shares"
+        "shares",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
@@ -19,11 +20,12 @@
       "Name": "Revoke All Permissions From Folder Share",
       "Snippet": "Get-SmbShareAccess -name $ShareName | Foreach {Revoke-SmbShareAccess -name $ShareName  -AccountName $_.AccountName -Force}",
       "Details": "Gets all the permissions for the share, then revokes them.",
-      "Alias": "revoke-all-permissions-from-folder-share",
+      "Alias": "",
       "Tags": [
         "Folders",
         "Permissions",
-        "Shares"
+        "shares",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0

@@ -4,59 +4,64 @@
   "Notes": [
     {
       "Name": "Delete File if it Exists",
-      "Snippet": "If (Test-Path $FilePath){\r\n\tRemove-Item $FilePath\r\n}",
+      "Snippet": "If (Test-Path $FilePath){\n\tRemove-Item $FilePath\n}",
       "Details": "This snippet uses the Test-Path to ensure the file exists. If it does, it will then delete it using Remove-Item",
-      "Alias": "delete-file-if-it-exists",
+      "Alias": "",
       "Tags": [
-        "Files"
+        "files",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Get All Files with a Certain Extension",
-      "Snippet": "# add '-recurse' to include sub folders\r\nGet-ChildItem -Path $directory -Filter \"*.CSV\"",
+      "Snippet": "# add '-recurse' to include sub folders\nGet-ChildItem -Path $directory -Filter \"*.CSV\"",
       "Details": "This command will return all the files in a directory and returns the ones that match the filter criteria. Include &#8216;-recurse&#8217; parameter to also return sub folders",
-      "Alias": "get-all-files-with-a-certain-extension",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "search"
+        "files",
+        "search",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Get All Folders in a Directory",
-      "Snippet": "# add '-recurse' to include sub folders\r\nGet-ChildItem -Path $directory -Directory",
+      "Snippet": "# add '-recurse' to include sub folders\nGet-ChildItem -Path $directory -Directory",
       "Details": "This command will return all the folders in a directory, and does not return the files. Include &#8216;-recurse&#8217; parameter to also return sub folders",
-      "Alias": "get-all-folders-in-a-directory",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "search"
+        "files",
+        "search",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Get All Files in a Directory",
-      "Snippet": "# add '-recurse' to include sub folders\r\nGet-ChildItem -Path $directory -File",
+      "Snippet": "# add '-recurse' to include sub folders\nGet-ChildItem -Path $directory -File",
       "Details": "This command will return all the files in a directory, and does not return the folders. Include &#8216;-recurse&#8217; parameter to also return sub folders",
-      "Alias": "get-all-files-in-a-directory",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "search"
+        "files",
+        "search",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
     },
     {
       "Name": "Get All Files and Folders in a Directory",
-      "Snippet": "# add '-recurse' to include sub folders\r\nGet-ChildItem -Path $directory",
+      "Snippet": "# add '-recurse' to include sub folders\nGet-ChildItem -Path $directory",
       "Details": "This command will return all the files and folders in a directory. Include &#8216;-recurse&#8217; parameter to also return sub folders",
-      "Alias": "get-all-files-and-folders-in-a-directory",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "search"
+        "files",
+        "search",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
@@ -65,10 +70,11 @@
       "Name": "Delete Files Older Than Specified Number of Days",
       "Snippet": "# Set number of days, in the past, to delete files\n$days = 7\n# Set directory to create logs in\n$directory = \"C:\\Test\\Logs\"\n\n# Get all files in the directory include '-recurse' to also get sub folders\n$files = Get-ChildItem -Path $directory -File\n# filter to ones last written to over X number of days\n$ToDelete = $files | Where-Object{$_.LastWriteTime -lt (Get-Date).Date.AddDays(-$days)}\n# Delete the files\n$ToDelete | Remove-Item -Force",
       "Details": "These commands return all the files in a directory and remove the ones older than the specified number of days.",
-      "Alias": "delete-files-older-than-specified-number-of-days",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "logs"
+        "files",
+        "logs",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
@@ -77,10 +83,11 @@
       "Name": "Create Test Log Files",
       "Snippet": "# Set number of days, in the past, to create log files for\n$days = 14\n# Set directory to create logs in\n$directory = \"C:\\Test\\Logs\"\n\n$i=1\nWhile($i -lt $days){\n    # Get Date and create log file\n    $date = (Get-Date).AddDays(-$i)\n    $logFile = \"u_ex\" + ($date.Year).ToString().Substring(2,2) + (($date.Month).ToString().PadLeft(2)).Replace(\" \",\"0\") + (($date.Day).ToString().PadLeft(2)).Replace(\" \",\"0\") + \".log\"\n    $logPath = join-path $directory $logFile\n    $date | out-file $logPath\n\n    # Set the Creation, Write, and Access time of log file to match date\n    Get-Item $logPath | % { $_.CreationTime = $date; $_.LastWriteTime = $date; $_.LastAccessTime = $date }\n\n    $i++\n}",
       "Details": "These commands will create a log file for each day, go back as many days as specified. The file attributes will be set to the past as well. This is great for testing cleanup scripts.",
-      "Alias": "create-test-log-files",
+      "Alias": "",
       "Tags": [
-        "Files",
-        "logs"
+        "files",
+        "logs",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
@@ -89,11 +96,12 @@
       "Name": "Zip All Files in Folder",
       "Snippet": "# Get the files to zip\n$FilesToZip = Get-ChildItem -Path $FolderPath -File\n\n# Load the assembly to get the zip functionality\n[Reflection.Assembly]::LoadWithPartialName( \"System.IO.Compression.FileSystem\" ) | Out-Null\n# Set compression level\n$compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal\n\n# Set Zip file pathc based on folder\n$ZipPath = Join-Path $FolderPath \"$(Split-Path $FolderPath -Leaf).zip\"\n\n# initialize the zip file\n$Archive = [System.IO.Compression.ZipFile]::Open( $ZipPath, \"Update\" )\n\n# add each file to the zip\nForeach($file in $FilesToZip){\n    $AddZip = [System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile($Archive, $file.FullName, $file.Name, $compressionLevel)\n}\n\n# release the zip\n$Archive.Dispose()\nWrite-Output \"The file '$ZipPath' has been created\"",
       "Details": "Creates a zip file and add every file from the specified directory into it. The zip file is named after the folder and will be placed inside of it.",
-      "Alias": "zip-all-files-in-folder",
+      "Alias": "",
       "Tags": [
         "archives",
-        "Files",
+        "files",
         "Folders",
+        "system-os",
         "zip"
       ],
       "Run": false,
@@ -101,11 +109,12 @@
     },
     {
       "Name": "Get File Name and Extension from Path",
-      "Snippet": "# Return just the file name\r\n[System.IO.Path]::GetFileName($FilePath)\r\n\r\n# Returns file name without the extension\r\n[System.IO.Path]::GetFileNameWithoutExtension($FilePath)\r\n\r\n# Returns the file extension only\r\n[System.IO.Path]::GetExtension($FilePath)",
+      "Snippet": "# Return just the file name\n[System.IO.Path]::GetFileName($FilePath)\n\n# Returns file name without the extension\n[System.IO.Path]::GetFileNameWithoutExtension($FilePath)\n\n# Returns the file extension only\n[System.IO.Path]::GetExtension($FilePath)",
       "Details": "Show examples of how to get the file name and extension information from the full file path",
-      "Alias": "get-file-name-and-extension-from-path",
+      "Alias": "",
       "Tags": [
-        "Files"
+        "files",
+        "system-os"
       ],
       "Run": false,
       "Kind": 0
