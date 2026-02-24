@@ -14,6 +14,188 @@
       ],
       "Run": false,
       "Kind": 0
+    },
+    {
+      "Name": "Convert Bytes to KB",
+      "Snippet": "[math]::Round($bytes / 1KB, 2)",
+      "Details": "Convert bytes to kilobytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert Bytes to MB",
+      "Snippet": "[math]::Round($bytes / 1MB, 2)",
+      "Details": "Convert bytes to megabytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert Bytes to GB",
+      "Snippet": "[math]::Round($bytes / 1GB, 2)",
+      "Details": "Convert bytes to gigabytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert Bytes to TB",
+      "Snippet": "[math]::Round($bytes / 1TB, 2)",
+      "Details": "Convert bytes to terabytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert KB to Bytes",
+      "Snippet": "$kb * 1KB",
+      "Details": "Convert kilobytes to bytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert MB to Bytes",
+      "Snippet": "$mb * 1MB",
+      "Details": "Convert megabytes to bytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert GB to Bytes",
+      "Snippet": "$gb * 1GB",
+      "Details": "Convert gigabytes to bytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert TB to Bytes",
+      "Snippet": "$tb * 1TB",
+      "Details": "Convert terabytes to bytes.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "units"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Format Number with Thousands Separator",
+      "Snippet": "'{0:n0}' -f $number",
+      "Details": "Format a number with group separators and no decimals.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "formatting",
+        "numbers"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Pad Number with Leading Zeros",
+      "Snippet": "$number.ToString('D5')",
+      "Details": "Pad a number to a fixed width with leading zeros.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "formatting",
+        "numbers"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert String to Int",
+      "Snippet": "[int]$string",
+      "Details": "Convert a numeric string to an int.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "conversion"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert Int to String",
+      "Snippet": "$number.ToString()",
+      "Details": "Convert an int to a string.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "conversion"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Check if Number is Even",
+      "Snippet": "($number % 2) -eq 0",
+      "Details": "True if the number is even.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "comparison"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Check if Number is Odd",
+      "Snippet": "($number % 2) -ne 0",
+      "Details": "True if the number is odd.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "numbers",
+        "comparison"
+      ],
+      "Run": false,
+      "Kind": 0
     }
   ]
 }

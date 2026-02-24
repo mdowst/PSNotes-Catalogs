@@ -3,33 +3,6 @@
   "Catalog": "General",
   "Notes": [
     {
-      "Name": "Generate Random Names",
-      "Snippet": "Function Get-RandomNames{\n    [CmdletBinding()]\n    [OutputType([Object])]\n    param(\n        [Parameter(Mandatory=$false)]\n\t\t[int] $count=10\n    )\n    \n    $Webfemale = Invoke-WebRequest \"https://raw.githubusercontent.com/mdowst/RandomDataLookups/master/People/popular-female-first.txt\"\n    $Webmale = Invoke-WebRequest \"https://raw.githubusercontent.com/mdowst/RandomDataLookups/master/People/popular-male-first.txt\"\n    $WebSurname = Invoke-WebRequest \"https://raw.githubusercontent.com/mdowst/RandomDataLookups/master/People/popular-surnames.txt\"\n\n    $female = @()\n    $female = $Webfemale.Content.Split(\"`n\").Trim() | ?{$_.length -gt 2} \n\n    $male = @()\n    $male = $Webmale.Content.Split(\"`n\").Trim() | ?{$_.length -gt 2} \n\n    $Surname = @()\n    $Surname = $WebSurname.Content.Split(\"`n\").Trim() | ?{$_.length -gt 2} \n\n    $names = @()\n    for($i=0; $i -ne $count; $i++)\n    {\n        if(($i % 2) -eq 1)\n        {\n        $names += New-Object PSObject -Property @{Given=$($male | Get-Random);\n                                                    Middle=$($male | Get-Random);\n                                                    Surname=$($Surname | Get-Random)}\n        }\n        else\n        {\n        $names += New-Object PSObject -Property @{Given=$($female | Get-Random);\n                                                    Middle=$($female | Get-Random);\n                                                    Surname=$($Surname | Get-Random)}\n        }\n    }\n\n    Return $names\n}",
-      "Details": "Pulls a list of all popular male and female names from the last 50 years and the 500 most common last names, and combines them to create a PowerShell object with a list of randomly generated names.",
-      "Alias": "",
-      "Tags": [
-        "data",
-        "fundamentals",
-        "general",
-        "random"
-      ],
-      "Run": false,
-      "Kind": 0
-    },
-    {
-      "Name": "Generate a Guid",
-      "Snippet": "[guid]::NewGUID()",
-      "Details": "Generate a new Guid",
-      "Alias": "",
-      "Tags": [
-        "fundamentals",
-        "general",
-        "guid"
-      ],
-      "Run": false,
-      "Kind": 0
-    },
-    {
       "Name": "Get PowerShell Version",
       "Snippet": "$PSVersionTable.PSVersion",
       "Details": "Returns the current version of PowerShell running.",

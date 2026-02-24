@@ -10,7 +10,6 @@
       "Tags": [
         "form",
         "fundamentals",
-        "prompt",
         "prompts"
       ],
       "Run": false,
@@ -18,14 +17,13 @@
     },
     {
       "Name": "Yes/No Prompt",
-      "Snippet": "$yes = new-Object System.Management.Automation.Host.ChoiceDescription \"&amp;Yes\",\"help\"\n$no = new-Object System.Management.Automation.Host.ChoiceDescription \"&amp;No\",\"help\"\n$choices = [System.Management.Automation.Host.ChoiceDescription[]]($yes,$no)\n$answer = $host.ui.PromptForChoice(\"Prompt\",\"Click yes to continue\",$choices,0)\n\nif($answer -eq 0){\n    Write-Host \"You clicked Yes\"\n}elseif($answer -eq 1){\n    Write-Host \"You clicked No\"\n}",
+      "Snippet": "$yes = New-Object System.Management.Automation.Host.ChoiceDescription \"&amp;Yes\",\"help\"\n$no = new-Object System.Management.Automation.Host.ChoiceDescription \"&amp;No\",\"help\"\n$choices = [System.Management.Automation.Host.ChoiceDescription[]]($yes,$no)\n$answer = $host.ui.PromptForChoice(\"Prompt\",\"Click yes to continue\",$choices,0)\n\nif($answer -eq 0){\n    Write-Host \"You clicked Yes\"\n}elseif($answer -eq 1){\n    Write-Host \"You clicked No\"\n}",
       "Details": "Creates a Yes/No prompt and provides an example of taking actions based on the answer selected.",
       "Alias": "",
       "Tags": [
         "confirmation",
         "form",
         "fundamentals",
-        "prompt",
         "prompts"
       ],
       "Run": false,

@@ -16,8 +16,20 @@
       "Kind": 0
     },
     {
-      "Name": "Elevate Script to Run As Administrator",
-      "Snippet": "# Request elevation with administration rights\nIf (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] \"Administrator\"))\n{   \n    $arguments = \"& '\" + $myinvocation.mycommand.definition + \"'\"\n    Start-Process powershell -Verb runAs -ArgumentList $arguments\n    Break\n} else {\n    # Code to run elevated here\n}",
+      "Name": "Run As Administrator 5.1",
+      "Snippet": "# Request elevation with administration rights\nIf (-NOT ([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] \"Administrator\"))\n{   \n    $arguments = \"& '\" + $myinvocation.mycommand.definition + \"'\"\n    Start-Process powershell -Verb runAs -ArgumentList $arguments\n    return\n} else {\n    # Code to run elevated here\n}",
+      "Details": "This command will automatically elevate your script during the run time.",
+      "Alias": "",
+      "Tags": [
+        "infrastructure",
+        "security"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Run As Administrator 7",
+      "Snippet": "if (-not ([Security.Principal.WindowsPrincipal] \n    [Security.Principal.WindowsIdentity]::GetCurrent()\n).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {\n\n    Start-Process pwsh `\n        -ArgumentList \"-NoProfile -ExecutionPolicy Bypass -File `\"$PSCommandPath`\"\" `\n        -Verb RunAs\n\n    exit\n}",
       "Details": "This command will automatically elevate your script during the run time.",
       "Alias": "",
       "Tags": [
