@@ -1,0 +1,33 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Prompts",
+  "Notes": [
+    {
+      "Name": "Input Box Pop-up",
+      "Snippet": "[System.Reflection.Assembly]::LoadWithPartialName('Microsoft.VisualBasic') | Out-Null\n$Value = [Microsoft.VisualBasic.Interaction]::InputBox(\"Enter a value\", \"Title\", $null)",
+      "Details": "Displays a pop-up box that prompts the user to enter a value. The value entered is then saved to a variable in the script.",
+      "Alias": "",
+      "Tags": [
+        "form",
+        "fundamentals",
+        "prompts"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Yes/No Prompt",
+      "Snippet": "$yes = New-Object System.Management.Automation.Host.ChoiceDescription \"&amp;Yes\",\"help\"\n$no = new-Object System.Management.Automation.Host.ChoiceDescription \"&amp;No\",\"help\"\n$choices = [System.Management.Automation.Host.ChoiceDescription[]]($yes,$no)\n$answer = $host.ui.PromptForChoice(\"Prompt\",\"Click yes to continue\",$choices,0)\n\nif($answer -eq 0){\n    Write-Host \"You clicked Yes\"\n}elseif($answer -eq 1){\n    Write-Host \"You clicked No\"\n}",
+      "Details": "Creates a Yes/No prompt and provides an example of taking actions based on the answer selected.",
+      "Alias": "",
+      "Tags": [
+        "confirmation",
+        "form",
+        "fundamentals",
+        "prompts"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

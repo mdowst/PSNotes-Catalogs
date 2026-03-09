@@ -1,0 +1,20 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Active Directory",
+  "Notes": [
+    {
+      "Name": "Get FSMO Roles",
+      "Snippet": "# Get the Domain Level Roles\nGet-ADDomain | Select-Object InfrastructureMaster, RIDMaster, PDCEmulator\n# Get the Forest Level Roles\nGet-ADForest | Select-Object DomainNamingMaster, SchemaMaster",
+      "Details": "Return all the domain and forest level FSMO roles.",
+      "Alias": "",
+      "Tags": [
+        "active",
+        "active directory",
+        "Domain Controller",
+        "FSMO"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

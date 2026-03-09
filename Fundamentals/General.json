@@ -1,0 +1,19 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "General",
+  "Notes": [
+    {
+      "Name": "Get PowerShell Version",
+      "Snippet": "$PSVersionTable.PSVersion",
+      "Details": "Returns the current version of PowerShell running.",
+      "Alias": "",
+      "Tags": [
+        "fundamentals",
+        "general",
+        "PSVersion"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

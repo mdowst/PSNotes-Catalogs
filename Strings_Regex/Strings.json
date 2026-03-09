@@ -1,0 +1,34 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Strings",
+  "Notes": [
+    {
+      "Name": "Parse Email Address",
+      "Snippet": "New-Object \"System.Net.Mail.MailAddress\" -ArgumentList $emailAddress",
+      "Details": "You can use this snippet to parse an email address and extract the different components of it. (Tip. It works for UPNs too)",
+      "Alias": "",
+      "Tags": [
+        "email",
+        "string",
+        "strings",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Reverse a string",
+      "Snippet": "$array = $string.ToCharArray()\n[array]::Reverse($array)\n-join($array)\n\n",
+      "Details": "Reserves the order of all characters in a string",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "string",
+        "strings",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

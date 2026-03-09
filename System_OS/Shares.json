@@ -1,0 +1,34 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Shares",
+  "Notes": [
+    {
+      "Name": "Grant Permissions to Folder Share",
+      "Snippet": "Grant-SmbShareAccess -name $ShareName -AccountName $Account -AccessRight Full -Force",
+      "Details": "Grants share permissions to a user or group",
+      "Alias": "",
+      "Tags": [
+        "Folders",
+        "Permissions",
+        "shares",
+        "system-os"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Revoke All Permissions From Folder Share",
+      "Snippet": "Get-SmbShareAccess -name $ShareName | Foreach {Revoke-SmbShareAccess -name $ShareName  -AccountName $_.AccountName -Force}",
+      "Details": "Gets all the permissions for the share, then revokes them.",
+      "Alias": "",
+      "Tags": [
+        "Folders",
+        "Permissions",
+        "shares",
+        "system-os"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

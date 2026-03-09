@@ -1,0 +1,20 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Tools",
+  "Notes": [
+    {
+      "Name": "Copy Your Profile from ISE to Visual Studio Code",
+      "Snippet": "# Get the path to the Profile files\n$ISEProfile = Join-Path (Split-Path $profile) \"Microsoft.PowerShellISE_profile.ps1\"\n$VSCProfile = Join-Path (Split-Path $profile) \"Microsoft.VSCode_profile.ps1\"\n\n# If the ISE Profile exists write the content to the VSCode Profile\nif(Test-Path $ISEProfile){\n    # Check if profile exists, create if it does not\n    if(!(Test-Path $VSCProfile)){\n        New-Item $VSCProfile -ItemType file -Force\n    }\n    # write content to VSCode Profile\n    \"`n# Copied from ISE Profile\" | Out-File -FilePath $VSCProfile -Append\n    Get-Content $ISEProfile | Out-File -FilePath $VSCProfile -Append\n    \"# End Copied from ISE Profile \" | Out-File -FilePath $VSCProfile -Append\n}",
+      "Details": "Ready to move to VSCode, and want to migrate your profile from ISE. This script will take the entries from ISE and copy them to the VSCode profile.",
+      "Alias": "",
+      "Tags": [
+        "ISE",
+        "tools",
+        "utilities",
+        "VSCode"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

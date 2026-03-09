@@ -1,0 +1,61 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Replace String",
+  "Notes": [
+    {
+      "Name": "Remove all special characters including spaces",
+      "Snippet": "$string = \"1. Computer name:DC-G11-FTW.contoso.com\"\n[regex]::Replace($string,\"[^0-9a-zA-Z]\",\"\")\n",
+      "Details": "Uses a regex expression with replace to remove all characters that do not match the expression.",
+      "Alias": "",
+      "Tags": [
+        "regex",
+        "replace",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Remove all special characters leaving spaces",
+      "Snippet": "$string = \"1. Computer name:DC-G11-FTW.contoso.com\"\n[regex]::Replace($string,\"[^0-9a-zA-Z ]\",\"\")\n",
+      "Details": "Uses a regex expression with replace to remove all characters that do not match the expression.",
+      "Alias": "",
+      "Tags": [
+        "regex",
+        "replace",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Replace using Regular Expression",
+      "Snippet": "$string = 'Thank you for calling 555-5757 your order total is $123.32'\n$string -Replace \"[0-9]\",\"0\"\n",
+      "Details": "Use the -Replace to Replace String using a regular expression",
+      "Alias": "",
+      "Tags": [
+        "regex",
+        "replace",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Replace using plain text replacement",
+      "Snippet": "$string = 'The quick brown fox jumps over the lazy dog'\n$string.Replace(\"brown\",\"red\")\n",
+      "Details": "Use the .Replace to Replace String using a plain text value",
+      "Alias": "",
+      "Tags": [
+        "replace",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

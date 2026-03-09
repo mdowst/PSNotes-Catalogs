@@ -1,0 +1,30 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Azure",
+  "Notes": [
+    {
+      "Name": "Find and Load the Azure Automation Hybrid Registration Module",
+      "Snippet": "$installPath = (Get-ItemProperty \"HKLM:\\SOFTWARE\\Microsoft\\System Center Operations Manager\\12\\Setup\\Agent\").InstallDirectory\n$modulePath = Get-ChildItem (Join-Path $installPath \"AzureAutomation\") -Recurse -Include 'HybridRegistration.psd1' | Select-Object -ExpandProperty FullName\nImport-Module $modulePath",
+      "Details": "The module to setup an Azure Automation Hybrid Runbook Worker is included in the install directory of the Microsoft Monitoring Agent. Since install directories can change, and since this module will include a version number in the path, you cannot hard code the path into a script. Instead you can query the registry for the install path, then lookup the modules psd1 file, bypassing the need to manually check the path every time you want to onboard a hybrid worker.",
+      "Alias": "",
+      "Tags": [
+        "azure",
+        "AzureAutomation"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Easily Switch Between Azure Subscriptions and Tenants",
+      "Snippet": "$SubscriptionId = \"Your-Subscription-Guid\"\nif($(Get-AzureRmContext).Subscription.SubscriptionId -ne $SubscriptionId){\n    Set-AzureRmContext -SubscriptionId $SubscriptionId -ErrorAction SilentlyContinue\n    if($(Get-AzureRmContext).Subscription.SubscriptionId -ne $SubscriptionId){\n        Clear-AzureRMContext -Scope CurrentUser -Force -ErrorAction SilentlyContinue\n        Clear-AzureRmDefault -Force -ErrorAction SilentlyContinue\n        $connect = Add-AzureRmAccount -SubscriptionId $SubscriptionId\n    }\n}",
+      "Details": "This snippet will check that the value of $SubscriptionId variable is the current Azure Subscription your session is connected to. If not then it will attempt to switch to it. If the subscription is not in the same context, then it will clear your current session and prompt for credentials to connect to the new subscription.",
+      "Alias": "",
+      "Tags": [
+        "azure",
+        "subscriptions"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

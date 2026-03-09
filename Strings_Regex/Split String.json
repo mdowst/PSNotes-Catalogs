@@ -1,0 +1,90 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Split String",
+  "Notes": [
+    {
+      "Name": "Split string into an array on spaces",
+      "Snippet": "$string = \"The quick brown fox jumps over the lazy dog.\"\n$string.split()\n",
+      "Details": "Uses a split to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "split",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Split string into an array on line break",
+      "Snippet": "$string.split(\"`n\")\n",
+      "Details": "Uses a split to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "split",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Exclude blanks when splitting a string into an array",
+      "Snippet": "$option = [System.StringSplitOptions]::RemoveEmptyEntries\n$string.split(\";\",$option)\n",
+      "Details": "Uses a split and optional options to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "split",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Split string into an array on semicolon",
+      "Snippet": "$string.split(\";\")\n\n",
+      "Details": "Uses a split to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "split",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get all Text after a character",
+      "Snippet": "$string = \"1. Computer name:DC-G11-FTW.contoso.com\"\n$string.Substring($string.IndexOf(\":\")+1,$string.length-$string.IndexOf(\":\")-1)\n",
+      "Details": "Uses a substring and IndexOf to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "split",
+        "string",
+        "strings-regex",
+        "substring"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get all Text before a character",
+      "Snippet": "$string = \"john.doe@contoso.com\"\n$string.Substring(0,$string.IndexOf(\"@\"))\n",
+      "Details": "Uses a substring and IndexOf to break apart the string",
+      "Alias": "",
+      "Tags": [
+        "split",
+        "string",
+        "strings-regex",
+        "substring"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

@@ -1,0 +1,593 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "DateTime",
+  "Notes": [
+    {
+      "Name": "Week Date Picker",
+      "Snippet": "$today = [datetime]::Today\n$dates = @()\nfor($i = $today.AddDays(0).DayOfWeek.value__; $i -ge 0; $i--){\n    $dates += $today.AddDays(-$i)\n}\n$date = $dates | Out-GridView -PassThru",
+      "Details": "List dates for current week; pick one via Out-GridView.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "form"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert From WMI Datetime",
+      "Snippet": "$WmiTime = '20190912173652.000000-300'\n[Management.ManagementDateTimeConverter]::ToDateTime($WmiTime)",
+      "Details": "Convert a WMI/DMTF datetime string to a [datetime].",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime",
+        "wmi"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "First Weekday of Month",
+      "Snippet": "# Get first day of Month\n$FirstWeekDay = Get-Date -day 1\n# if day is Sat or Sun add days until it is not\nwhile(0,6 -contains $FirstWeekDay.DayOfWeek.value__){\n    $FirstWeekDay = $FirstWeekDay.AddDays(1)\n}\n$FirstWeekDay",
+      "Details": "Returns the first weekday of the month for any given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Last Weekday of Month",
+      "Snippet": "# Get last day of Month\n$LastWeekDay = (Get-Date -day 1).AddMonths(1).AddMilliseconds(-1)\n# if day is Sat or Sun subtract days until it is not\nwhile(0,6 -contains $LastWeekDay.DayOfWeek.value__){\n    $LastWeekDay = $LastWeekDay.AddDays(-1)\n}\n$LastWeekDay",
+      "Details": "Returns the last weekday of the month for any given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert Between Time Zones",
+      "Snippet": "param(\n    [Parameter(Mandatory)]\n    [datetime] $Date,\n\n    [Parameter(Mandatory)]\n    [string] $FromTimeZoneId,\n\n    [Parameter(Mandatory)]\n    [string] $ToTimeZoneId\n)\n\n$fromTz = [TimeZoneInfo]::FindSystemTimeZoneById($FromTimeZoneId)\n$toTz   = [TimeZoneInfo]::FindSystemTimeZoneById($ToTimeZoneId)\n\n# Treat the input date as a \"wall clock\" time in the FROM time zone (not local/UTC).\n# This avoids DateTime.Kind ambiguity and handles DST via GetUtcOffset($Date).\n$unspecified = [DateTime]::SpecifyKind($Date, [DateTimeKind]::Unspecified)\n$fromOffset  = $fromTz.GetUtcOffset($unspecified)\n\n$fromDto = [DateTimeOffset]::new($unspecified, $fromOffset)\n\n# Convert to target zone\n[TimeZoneInfo]::ConvertTime($fromDto, $toTz)",
+      "Details": "Convert from one Time Zone to another.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "time-zones"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Search Time Zones",
+      "Snippet": "$SearchString = '<search-string>'\n[System.TimeZoneInfo]::GetSystemTimeZones() | Where-Object{$_.DisplayName -like \"*$($SearchString)*\" -or $_.DaylightName -like \"*$($SearchString)*\" -or $_.StandardName -like \"*$($SearchString)*\" -or $_.Id -like \"*$($SearchString)*\"}",
+      "Details": "Get a list of all Time Zones and filter based on a string",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "time-zones"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "List All Time Zones",
+      "Snippet": "[System.TimeZoneInfo]::GetSystemTimeZones()",
+      "Details": "Get a list of all Time Zones",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "time-zones"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Year",
+      "Snippet": "(Get-Date).Year",
+      "Details": "Format a DateTime value in the Year format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Year Quarter",
+      "Snippet": "$date = Get-Date\n\"$($date.Year)$(\"{0:00}\" -f [Math]::ceiling($date.Month/3) )\"",
+      "Details": "Format a DateTime value in the Year Quarter format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Quarter",
+      "Snippet": "$date = Get-Date\n[Math]::ceiling($date.Month/3)",
+      "Details": "Format a DateTime value in the Quarter format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Month Abbreviation",
+      "Snippet": "$date = Get-Date\n(Get-Culture).DateTimeFormat.GetAbbreviatedMonthName($date.Month)",
+      "Details": "Format a DateTime value in the Month Abbreviation format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Month Name",
+      "Snippet": "$date = Get-Date\n(Get-Culture).DateTimeFormat.GetMonthName($date.Month)",
+      "Details": "Format a DateTime value in the Month Name format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Month",
+      "Snippet": "(Get-Date).Month",
+      "Details": "Format a DateTime value in the Month format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Day Of Week",
+      "Snippet": "(Get-Date).DayOfWeek",
+      "Details": "Format a DateTime value in the Day Of Week format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Day Abbreviation",
+      "Snippet": "$date = Get-Date\n(Get-Culture).DateTimeFormat.GetAbbreviatedDayName($date.DayOfWeek.value__)",
+      "Details": "Format a DateTime value in the Day Abbreviation format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Day",
+      "Snippet": "(Get-Date).Day",
+      "Details": "Format a DateTime value in the Day format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Year Month",
+      "Snippet": "(Get-Date).ToString('yyyy-MM')",
+      "Details": "Format a DateTime value in the Year Month format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Universal Sortable Date Time",
+      "Snippet": "Get-Date -Format u",
+      "Details": "Format a DateTime value in the Universal Sortable Date Time format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to 24 Hour Time",
+      "Snippet": "(Get-Date).ToString(\"HH:mm\")",
+      "Details": "Format a DateTime value in the 24 Hour Time format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Long Time",
+      "Snippet": "Get-Date -Format T",
+      "Details": "Format a DateTime value in the Long Time format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Short Time",
+      "Snippet": "Get-Date -Format t",
+      "Details": "Format a DateTime value in the Short Time format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Round Trip",
+      "Snippet": "Get-Date -Format o",
+      "Details": "Format a DateTime value in the Round Trip format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Month Day",
+      "Snippet": "Get-Date -Format M",
+      "Details": "Format a DateTime value in the Month Day format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to Full DateTime",
+      "Snippet": "Get-Date -Format F",
+      "Details": "Format a DateTime value in the Full DateTime format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to LongDate Short Time",
+      "Snippet": "Get-Date -Format f",
+      "Details": "Format a DateTime value in the LongDate Short Time format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to LongDate",
+      "Snippet": "Get-Date -Format D",
+      "Details": "Format a DateTime value in the LongDate format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to ShortDate",
+      "Snippet": "Get-Date -Format d",
+      "Details": "Format a DateTime value in the ShortDate format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to ISO8601",
+      "Snippet": "([DateTimeOffset](Get-Date)).ToString('o')",
+      "Details": "Format a DateTime value in the ISO8601 format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to ISO8601UTC",
+      "Snippet": "([DateTimeOffset](Get-Date)).ToUniversalTime().ToString('o')",
+      "Details": "Format a DateTime value in the ISO8601UTC format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to SQL",
+      "Snippet": "(Get-Date).ToString(\"yyyy-MM-dd HH:mm:ss.fff\")",
+      "Details": "Format a DateTime value in the SQL format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "DateTime to RFC1123UTC",
+      "Snippet": "Get-Date (Get-Date).ToUniversalTime() -Format r",
+      "Details": "Format a DateTime value in the RF C1123UTC format",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "date-formats",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert From UTC to Local",
+      "Snippet": "(Get-Date).ToLocalTime()",
+      "Details": "Convert a UTC datetime to local time.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert to UTC",
+      "Snippet": "(Get-Date).ToUniversalTime()",
+      "Details": "Convert a local datetime to UTC.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert From Unix Time",
+      "Snippet": "[DateTimeOffset]::FromUnixTimeSeconds([int64]$UnixTime).LocalDateTime",
+      "Details": "Convert a Unix timestamp to a local [datetime].",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "epoch",
+        "unix"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Convert To Unix Time",
+      "Snippet": "[int64][DateTimeOffset]::UtcNow.ToUnixTimeSeconds()",
+      "Details": "Convert a local datetime to a Unix timestamp.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "epoch",
+        "unix"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Current Time Zone",
+      "Snippet": "[System.TimeZoneInfo]::Local",
+      "Details": "Get the current time zone of the system.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime",
+        "time-zones"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Week Number Of Year",
+      "Snippet": "Get-Date -uformat %V",
+      "Details": "Get the week number of the year for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "End of Month",
+      "Snippet": "(Get-Date -day 1).AddMonths(1).AddMilliseconds(-1)",
+      "Details": "Get the last moment of the month for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Last Day of Month",
+      "Snippet": "(Get-Date -day 1).AddMonths(1).AddDays(-1)",
+      "Details": "Get the last day of the month for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "First Day Of Month",
+      "Snippet": "Get-Date -day 1",
+      "Details": "Get the first day of the month for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "End of Week",
+      "Snippet": "$date = Get-Date\n$date.Date.AddDays(7-($date).DayOfWeek.value__).AddMilliseconds(-1)",
+      "Details": "Get the last moment of the week for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Last Day of Week",
+      "Snippet": "$date = Get-Date\n$date.Date.AddDays(6-($date).DayOfWeek.value__)",
+      "Details": "Get the last day of the week for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "First Day Of Week",
+      "Snippet": "$date = Get-Date\n$date.Date.AddDays(-($date).DayOfWeek.value__)",
+      "Details": "Get the first day of the week for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "End Of Year",
+      "Snippet": "(Get-Date -day 1 -Month 1).AddYears(1).AddMilliseconds(-1)",
+      "Details": "Get the last moment of the year for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Last Day Of Year",
+      "Snippet": "Get-Date -day 31 -Month 12",
+      "Details": "Get the last day of the year for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "First Day Of Year",
+      "Snippet": "Get-Date -day 1 -Month 1",
+      "Details": "Get the first day of the year for a given date.",
+      "Alias": "",
+      "Tags": [
+        "data-types",
+        "datetime"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

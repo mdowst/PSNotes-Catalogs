@@ -1,0 +1,54 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Conditional Statements",
+  "Notes": [
+    {
+      "Name": "Switch Statement",
+      "Snippet": "switch ($value)\n{\n    1 {\"It is one.\"}\n    2 {\"It is two.\"}\n    3 {\"It is three.\"}\n    4 {\"It is four.\"}\n    default { \"Unknown value: $value\" }\n}",
+      "Details": "Match a value against multiple cases. Cleaner than many if/elseif blocks.",
+      "Alias": "",
+      "Tags": [
+        "conditional",
+        "conditions",
+        "fundamentals",
+        "logic",
+        "switch"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "If/ElseIf/Else Statement",
+      "Snippet": "# If $value equals 1 write True 1, else if it equals 2 write True 2, else write False\nif($value -eq 1){\n    Write-Host \"True 1\"\n} elseif($value -eq 2){\n    Write-Host \"True 2\"\n} else {\n    Write-Host \"False\"\n}",
+      "Details": "Match a value against multiple cases. Cleaner than many if/elseif blocks.",
+      "Alias": "",
+      "Tags": [
+        "conditional",
+        "conditions",
+        "elseif",
+        "else",
+        "fundamentals",
+        "if",
+        "logic"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "If/Else Statement",
+      "Snippet": "# If $value equals 1 write True, else write False\nif($value -eq 1){\n    Write-Host \"True\"\n} else {\n    Write-Host \"False\"\n}",
+      "Details": "Run code when a condition is true; use else for alternate paths.",
+      "Alias": "",
+      "Tags": [
+        "conditional",
+        "conditions",
+        "else",
+        "fundamentals",
+        "if",
+        "logic"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

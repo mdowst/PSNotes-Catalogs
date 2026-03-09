@@ -1,0 +1,88 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Networking",
+  "Notes": [
+    {
+      "Name": "Check Remote Desktop Protocol Port",
+      "Snippet": "Test-NetConnection -ComputerName $Server -CommonTCPPort RDP",
+      "Details": "Using the Test-NetConnection cmdlet you can confirm that a server is reachable via the standard RDP port of 3389.",
+      "Alias": "",
+      "Tags": [
+        "infrastructure",
+        "networking",
+        "port"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Check if Port is Open",
+      "Snippet": "$socket = New-Object Net.Sockets.TcpClient\n$socket.Connect($IPAddress,$Port)\n$socket.Connected",
+      "Details": "Just supply an IP Address and Port number and it will return true or false, based on if it was able to connect.",
+      "Alias": "",
+      "Tags": [
+        "infrastructure",
+        "networking",
+        "port"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get Your Local IP Address",
+      "Snippet": "Get-NetIPAddress",
+      "Details": "Get-NetIPAddress returns all the local IP addresses of the machine it is run on.",
+      "Alias": "",
+      "Tags": [
+        "dns",
+        "infrastructure",
+        "ip-address",
+        "networking"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get External IP Address",
+      "Snippet": "Invoke-RestMethod 'https://api.ipify.org?format=json' | Select-Object -ExpandProperty ip",
+      "Details": "Uses the ipify API to return your external IP address",
+      "Alias": "",
+      "Tags": [
+        "dns",
+        "infrastructure",
+        "ip-address",
+        "networking"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get IP from Host Name",
+      "Snippet": "[System.Net.Dns]::GetHostAddresses($ServerName)",
+      "Details": "Get the IP address based on the host name",
+      "Alias": "",
+      "Tags": [
+        "dns",
+        "infrastructure",
+        "ip-address",
+        "networking"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Get Host Name from IP",
+      "Snippet": "[System.Net.Dns]::GetHostByAddress($IPAddress)",
+      "Details": "Get the host name from an IP address",
+      "Alias": "",
+      "Tags": [
+        "dns",
+        "infrastructure",
+        "ip-address",
+        "networking"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

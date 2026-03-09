@@ -1,0 +1,32 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Fun",
+  "Notes": [
+    {
+      "Name": "PowerShell Timer with Alarm",
+      "Snippet": "Function Start-Timer {\n    param(\n    [Parameter(Mandatory=$true)]\n    [int]$seconds,\n    [Parameter(Mandatory=$false)]\n    [switch]$alarm \n    )\n    $a = $(Get-Date)\n    For($i=1;$i -le $seconds;$i++){\n        Write-Progress -Activity \"$seconds Second Timer\" -Status $i -PercentComplete $(($i/$seconds)*100) -id 1\n        Start-Sleep -Seconds 1\n    }\n\n    if($alarm){\n        For($i=1;$i -le 10;$i++){\n            [console]::beep(500,300)\n        }\n    }\n}",
+      "Details": "Simply call the function with the number of seconds and the optional alarm switch. It will provide a countdown with a progress bar.",
+      "Alias": "",
+      "Tags": [
+        "friday-fun",
+        "fun",
+        "utilities"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Make Your Computer Talk",
+      "Snippet": "Add-Type -AssemblyName System.Speech\n$Speech = New-Object System.Speech.Synthesis.SpeechSynthesizer\n$Speech.Speak(\"I'm sorry Dave, I'm afraid I can't do that\")",
+      "Details": "Use the built-in Speech Synthesizer to have PowerShell make your computer talk. Credit to <a href=\"https://www.reddit.com/r/PowerShell/comments/b84xid/beep/ejw3s1g/?st=ju38ok5q&amp;sh=372b3e9e\" target=\"blank\" rel=\"noopener noreferrer\">u/urabusPenguin</a> on r/PowerShell for the idea.",
+      "Alias": "",
+      "Tags": [
+        "friday-fun",
+        "fun",
+        "utilities"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Arrays",
+  "Notes": [
+    {
+      "Name": "Remove First Entry in Fixed Array",
+      "Snippet": "# Remove first entry\n$array = $array[1..($array.Length-1)]\n",
+      "Details": "Remove the first element from a fixed-size array by slicing and reassigning.",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "arrays",
+        "fundamentals"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Generic List of PSObjects",
+      "Snippet": "[System.Collections.Generic.List[PSObject]] $arr = @()\n$arr.Add($objectA)\n$arr.Add($objectB)\n",
+      "Details": "Create a strongly-typed list and add objects.",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "arrays",
+        "fundamentals",
+        "list",
+        "psobject"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

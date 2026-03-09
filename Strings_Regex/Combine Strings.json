@@ -1,0 +1,75 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Combine Strings",
+  "Notes": [
+    {
+      "Name": "Combine an array into a string with semicolon separator",
+      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\n$array -join(';')\n",
+      "Details": "Uses a join to combine the strings",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "combine",
+        "join",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Combine an array into a string with space separator",
+      "Snippet": "$array = 'The','quick','brown','fox','jumps','over','the','lazy','dog.'\n$array -join(' ')\n",
+      "Details": "Uses a join to combine the strings",
+      "Alias": "",
+      "Tags": [
+        "array",
+        "combine",
+        "join",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Composite Format String",
+      "Snippet": "$string = 'The quick brown {0} jumps over the lazy {1}.'\n$string -f 'fox','dog'\n",
+      "Details": "Allows for the easy replacement of certain characters. Great when dealing with multiple languages.",
+      "Alias": "",
+      "Tags": [
+        "combine",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Use StringBuilder to combine multiple strings",
+      "Snippet": "$stringBuilder = New-Object System.Text.StringBuilder\nfor ($i = 0; $i -lt 10; $i++){\n    $stringBuilder.Append(\"Line $i`r`n\") | Out-Null\n}\n$stringBuilder.ToString()\n",
+      "Details": "This performs much better the stanard array builder of +=",
+      "Alias": "",
+      "Tags": [
+        "combine",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    },
+    {
+      "Name": "Combine multiple strings",
+      "Snippet": "$string1 = \"The quick brown fox \"\n$string2 =\"jumps over the lazy dog\"\n$string1 + $string2\n",
+      "Details": "This should only be used for a fixed number of strings.<br />\nFor combining a lot of strings or an unknown number, refer to the StringBuilder",
+      "Alias": "",
+      "Tags": [
+        "combine",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}

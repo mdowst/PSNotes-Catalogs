@@ -1,0 +1,19 @@
+{
+  "StoreVersion": 1,
+  "Catalog": "Search String",
+  "Notes": [
+    {
+      "Name": "Find none ASCII characters",
+      "Snippet": "$string = \"In mathematics, summation (capital Greek sigma symbol: ∑) is the addition of a sequence of numbers.\"\n$string.ToCharArray() | ForEach-Object{\n    $char = $_\n    try{$ascii = [byte][char]$char}\n    catch{\"$char - None ascii character\" }\n}",
+      "Details": "Breaks the string into a char array and attempts is convert the char back to it ASCII value.<br />\nIf it fails to convert then it is not a standard ASCII character.",
+      "Alias": "",
+      "Tags": [
+        "search",
+        "string",
+        "strings-regex"
+      ],
+      "Run": false,
+      "Kind": 0
+    }
+  ]
+}
